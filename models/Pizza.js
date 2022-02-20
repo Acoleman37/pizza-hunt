@@ -5,9 +5,13 @@ const PizzaSchema = new Schema(
   {
     pizzaName: {
       type: String,
+      required: 'You need to provide a pizza name!', // Will require data to exist for that field
+      trim: true,
     },
     createdBy: {
       type: String,
+      required: true, // Will require data to exist for that field
+      skim: true,
     },
     createdAt: {
       type: Date,
@@ -16,7 +20,9 @@ const PizzaSchema = new Schema(
     },
     size: {
       type: String,
-      default: "Large",
+      required: true,
+      enum: ['Personl', 'Small', 'Medium', 'Large', 'Extra Large'],
+      default: 'Large'
     },
     toppings: [],
     comments: [
